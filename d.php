@@ -1,5 +1,31 @@
 <?php
 
+/*
+
+for mysql/mariadb:
+
+setup([
+		"host" => "127.0.0.1",
+		"name" => "database_name",
+		"char" => "utf8mb4",
+		"port" => "3306",
+		"user" => "user_name",
+		"pass" => "password"
+	],
+	TRUE,
+	FALSE
+);
+
+for sqlite:
+
+setup([
+		"name" => "database_name",
+	]
+);
+
+*/
+
+
 class D {
 	public static $db;
 	private static $f;
@@ -53,7 +79,7 @@ class D {
 			$new = [];
 
 			foreach ($obj as $col => $val) {
-				if ($field != "_table") {
+				if ($col != "_table") {
 					if (!in_array($col, $cols)) {
 						$new[] = [$col => $val];
 					}
@@ -91,7 +117,7 @@ class D {
 			$sql = "update {$table} set ";
 
 			foreach ($obj as $col => $val) {
-				if ($field != "_table") {
+				if ($col != "_table") {
 					$sql .= "{$col} = {$val},";
 				}
 			}
@@ -103,7 +129,7 @@ class D {
 			$sql = "insert into {$table} (";
 
 			foreach ($obj as $col => $val) {
-				if ($field != "_table") {
+				if ($col != "_table") {
 					$sql .= "{$col},";
 				}
 			}
