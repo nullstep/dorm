@@ -1,2 +1,2 @@
 # dorm
-a basic orm class
+a basic php orm class
